@@ -1,0 +1,29 @@
+<div class="main">
+    <h2>Liste de vos projets</h2>
+
+    <div class="projectContainer">
+
+        <button *ngIf="!showAddForm" (click)="switchFormVisibility()">Ajouter</button>
+
+        <div *ngIf="showAddForm">
+            <form [formGroup]="registerForm" (ngSubmit)="addProject()">
+                <div class="form-group">
+                    <label for="name">Nom : </label>
+                    <input id="name" type="text" formControlName="name">
+                </div>
+
+                <div class="form-submit">
+                    <input class="button" type="submit" value="Ajouter">
+                </div>
+            </form>
+        </div>
+
+        <div class="projectList">
+
+            <a routerLink="/project/{{project.id}}" *ngFor="let project of projects" class="project"
+                [ngStyle]="{'background-color': cardProjColor}">
+                {{project.name}}
+            </a>
+        </div>
+    </div>
+</div>

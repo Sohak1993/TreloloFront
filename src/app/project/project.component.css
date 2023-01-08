@@ -1,0 +1,62 @@
+.project {
+    display: flex;
+    width: 95%;
+    margin: auto;
+}
+
+.listName {
+    margin-bottom: 0.5em;
+}
+
+.listContainer {
+    width: 18em;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    margin-right: 1em;
+    background-color: gainsboro;
+    padding: 1em;
+}
+
+.task {
+    background-color: white;
+    margin-bottom: 0.5em;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.task:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+.addList {
+    width: 9rem;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+
+.addTask {
+    width: 9rem;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    margin-top: 1em;
+}
+
+.openedTask {
+    margin: 2.5em;
+}
+
+
+.form-group {
+    display: flex;
+}
+
+.form-submit {
+    width: 100%;
+    display: flex;
+}
+
+label {
+    width: 10%;
+}

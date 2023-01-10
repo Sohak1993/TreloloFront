@@ -1,3 +1,4 @@
+
 .project {
     display: flex;
     width: 95%;
@@ -52,6 +53,11 @@
     display: flex;
 }
 
+.form-group-col {
+  display: flex;
+  flex-direction: column;
+}
+
 .form-submit {
     width: 100%;
     display: flex;
@@ -59,4 +65,39 @@
 
 label {
     width: 10%;
+}
+
+.newListModal{
+  width: 10%;
+}
+
+.newTaskModal{
+  width: 100%;
+}
+
+.deleteProj{
+  width: 6em;
+  margin-left: 3em;
+  margin-bottom: 1em;
+  border-radius: 0.5em;
+}
+
+.deleteButton{
+  border: 1px solid black;
+  margin-top: 1em;
+}
+
+.listHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.deleteList{
+  border: 1px solid black;
+  border-radius: 0.5em;
+}
+
+.deleteList:hover{
+  color: red;
 }

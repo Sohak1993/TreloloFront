@@ -30,6 +30,7 @@ export class TaskService {
   }
 
   update(task: Task) {
+    console.log(task);
     return this._http.put(this._url, task)
   }
 }

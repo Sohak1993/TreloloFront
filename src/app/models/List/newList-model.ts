@@ -1,4 +1,4 @@
-export class newList {
+export class NewList {
     name: string;
     idProject: number;
     deadLine: Date;

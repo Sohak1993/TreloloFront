@@ -24,4 +24,8 @@ export class ProjectsService {
   createProject(project: Project) {
     return this._http.post(this._url, project)
   }
+
+  delete(idProject: number){
+    return this._http.delete(this._url + idProject)
+  }
 }

@@ -29,11 +29,16 @@ export class ProjectsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initProj()
+  }
+
+  initProj(){
     this._projectsService.getByUser(this.idUser).subscribe({
       next: (res) => {
         this.projects = res;
       }
     })
+
   }
 
   switchFormVisibility(): void {
@@ -51,9 +56,8 @@ export class ProjectsListComponent implements OnInit {
     this._projectsService.createProject(project).subscribe({
       next: (res) => {
         this.projects.push(project)
+        this.initProj()
       }
     })
-
-
   }
 }

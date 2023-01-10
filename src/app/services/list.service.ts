@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { List } from '../models/List/list-model';
 import { Observable } from 'rxjs';
-import { newList } from '../models/List/newList-model';
+import { NewList } from '../models/List/newList-model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class ListService {
     return this._http.get<List[]>(this._url + 'getByProject/' + idProject)
   }
 
-  createList(list: newList) {
+  createList(list: NewList) {
     return this._http.post(this._url, list)
   }
 

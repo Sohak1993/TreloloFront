@@ -1,22 +1,79 @@
 <div class="projectContainer">
     <a routerLink="/projects">Liste des projets</a>
 
-    <p>{{project.name}}</p>
+    <ng-container *ngIf="project |async as p">
+      <p>Nom du projet : {{p.name}}</p>
+    </ng-container>
+
+    <button class="deleteButton" (click)="deleteProj(projectId)" style="margin-left: 2.1em; margin-bottom: 1em;">Supprimer</button>
 
     <div class="project">
         <div class="listContainer" *ngFor="let list of fullLists">
-            <div class="listName">
-                {{list.name}}
+            <div class="listHeader">
+              <div class="listName">
+                  {{list.name}}
+              </div>
+              <div>
+                <button class="deleteList" (click)="deleteList(list.id)">X</button>
+              </div>
             </div>
+
             <div *ngFor="let task of list.tasks" class="task" (click)="openTask(task.id)">
                 {{task.name}}
             </div>
-            <div>
-                <button class="addTask">Ajouter une tâche</button>
+            <div class="newTaskModal">
+                <button class="addTask" id="newTaskButton{{list.id}}" (click)="showAddTaskForm(list.id)">Ajouter une tâche</button>
+
+                <div id="addTaskModal{{list.id}}" class="addTaskModal" hidden >
+
+                  <form [formGroup]="addTaskForm" (ngSubmit)="addTask(list.id)">
+
+                      <div class="form-group-col">
+                          <label for="nameTask{{list.id}}">Nom: </label>
+                          <input id="nameTask{{list.id}}" type="text" formControlName="name" value="">
+                      </div>
+
+                      <div class="form-group-col">
+                          <label for="deadLineTask{{list.id}}">DeadLine: </label>
+                          <input id="deadLineTask{{list.id}}" type="date" formControlName="deadLine" value="">
+                      </div>
+
+                      <div class="form-submit">
+                          <input class="button" type="submit" value="Valider">
+                      </div>
+
+                  </form>
+
+                </div>
             </div>
         </div>
 
-        <button class="addList">Ajouter une liste</button>
+        <div class="newListModal">
+
+          <button [style.display]="addListFromIsVisible ? 'none' : 'block'" class="addList" (click)="showAddListForm()">Ajouter une liste</button>
+
+          <div class="addListModal" [style.display]="addListFromIsVisible ? 'block' : 'none'">
+
+            <form [formGroup]="addListForm" (ngSubmit)="addList()">
+
+                <div class="form-group-col">
+                    <label for="nameList">Nom: </label>
+                    <input id="nameList" type="text" formControlName="name" value="">
+                </div>
+
+                <div class="form-group-col">
+                    <label for="deadLineList">DeadLine: </label>
+                    <input id="deadLineList" type="date" formControlName="deadLine" value="">
+                </div>
+
+                <div class="form-submit">
+                    <input class="button" type="submit" value="Valider">
+                </div>
+
+            </form>
+
+          </div>
+        </div>
     </div>
 </div>
 
@@ -26,18 +83,21 @@
 
             <div class="form-group">
                 <label for="name">Nom : </label>
-                <input id="name" type="text" formControlName="name" value="{{openedTask ? openedTask.name : ''}}">
+                <input id="name" type="text" formControlName="name">
             </div>
 
             <div class="form-group">
                 <label for="deadLine">DeadLine : </label>
-                <input id="deadLine" type="date" formControlName="deadLine"
-                    value="{{openedTask ? _helperService.formatDate('yyyy-MM-dd', openedTask.deadLine)  : ''}}">
+                <input id="deadLine" type="date" formControlName="deadLine">
             </div>
 
             <div class="form-submit">
                 <input class="button" type="submit" value="Valider">
             </div>
+
+
+            <button class="deleteButton" (click)="deleteTask()">Supprimer</button>
+
 
         </form>
     </div>

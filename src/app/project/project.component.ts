@@ -39,7 +39,7 @@ export class ProjectComponent implements OnInit {
   addListFromIsVisible: boolean = false;
 
   constructor(
-    private _router : Router,
+    private _router: Router,
     public _helperService: HelpersService,
     private _activeRoute: ActivatedRoute,
     private _projectService: ProjectsService,
@@ -70,7 +70,7 @@ export class ProjectComponent implements OnInit {
     this.initProject()
   }
 
-  initProject(){
+  initProject() {
     this.project = this._projectService.getById(this.projectId);
 
     this._listService.getByProject(this.projectId).subscribe({
@@ -98,7 +98,7 @@ export class ProjectComponent implements OnInit {
   }
 
   // Delete Project /////////////////////////////////////
-  deleteProj(projectId: number){
+  deleteProj(projectId: number) {
     this._projectService.delete(projectId).subscribe({
       next: (res) => {
         this._router.navigate(['projects'])
@@ -124,7 +124,7 @@ export class ProjectComponent implements OnInit {
 
     this.openedTask.name = this.openedTaskForm.value.name;
     this.openedTask.deadLine = this.openedTaskForm.value.deadLine;
-
+    console.log(this.openedTask)
     this._taskService.update(this.openedTask).subscribe({
       next: (res) => {
       }
@@ -134,11 +134,11 @@ export class ProjectComponent implements OnInit {
   }
 
   // Add list ////////////////////////////////////////////
-  showAddListForm(){
+  showAddListForm() {
     this.addListFromIsVisible = true;
   }
 
-  addList(){
+  addList() {
     this.addListFromIsVisible = false;
 
     this.newList = new NewList(
@@ -155,14 +155,14 @@ export class ProjectComponent implements OnInit {
   }
 
   // Add Task /////////////////////////////////
-  showAddTaskForm(idList : number){
+  showAddTaskForm(idList: number) {
 
     document.getElementById('addTaskModal' + idList.toString())?.removeAttribute("hidden")
     document.getElementById('newTaskButton' + idList.toString())?.setAttribute("hidden", 'true')
 
   }
 
-  addTask(idList : number){
+  addTask(idList: number) {
 
     document.getElementById('addTaskModal' + idList.toString())?.setAttribute("hidden", 'true')
     document.getElementById('newTaskButton' + idList.toString())?.removeAttribute("hidden")
@@ -172,21 +172,21 @@ export class ProjectComponent implements OnInit {
       idList,
       this.addTaskForm.value.deadLine
     )).subscribe({
-      next:(res) => {
+      next: (res) => {
         this.initProject()
       }
     })
   }
 
-  deleteTask(){
+  deleteTask() {
     this._taskService.delete(this.openedTask.id).subscribe({
-      next: (res) =>{
+      next: (res) => {
 
       }
     })
   }
 
-  deleteList(idList: number){
+  deleteList(idList: number) {
     this._listService.delete(idList).subscribe({
       next: (res) => {
         this.initProject()

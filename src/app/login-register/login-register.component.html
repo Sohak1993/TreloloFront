@@ -1,0 +1,56 @@
+<div class="container">
+    <form [formGroup]="loginForm" id="loginForm">
+        <h2>Login : </h2>
+        <div class="form-group">
+            <label for="loginEmail">Email : </label>
+            <input id="loginEmail" type="text" formControlName="loginEmail">
+        </div>
+
+        <div class="form-group">
+            <label for="loginPassword">Password : </label>
+            <input id="loginPassword" type="text" formControlName="loginPassword">
+        </div>
+
+        <div class="form-submit">
+            <input class="button" type="submit" value="Valider">
+        </div>
+    </form>
+
+    <form [formGroup]="registerForm" id="registerForm" hidden>
+        <h2>Register : </h2>
+        <div class="form-group">
+            <label for="registerEmail">Email : </label>
+            <input id="registerEmail" type="text" formControlName="registerEmail">
+        </div>
+
+        <div class="form-group">
+            <label for="registerPassword">Password : </label>
+            <input id="registerPassword" type="text" formControlName="registerPassword">
+        </div>
+
+        <div class="form-submit">
+            <input class="button" type="submit" value="Valider">
+        </div>
+    </form>
+
+    <div class="loginOrRegister">
+        <div class="radio-group">
+            <div class="content">
+                <input checked="checked" id="login" class="radio-button" type="radio" name="radio"
+                    (click)="toggleLoginRegister()" />
+                <label for="login">
+                    <i class="fas fa-user fa-1x"></i>
+                    <span class="labeltext">Login</span>
+                </label>
+            </div>
+
+            <div>
+                <input id="register" class="radio-button" type="radio" name="radio" (click)="toggleLoginRegister()" />
+                <label for="register">
+                    <i class="fas fa-users fa-1x"></i>
+                    <span class="labeltext">Register</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 95%;
+    margin-top: 10em;
+}
+
+.form-group {
+    display: flex;
+}
+
+.form-group-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-submit {
+    width: 100%;
+    display: flex;
+    
+
+}
+
+label {
+    width: 10%;
+}
+
+form {
+    margin-bottom: 2em;
+}
+
+
+/* BUTTON */
+.loginOrRegister {}
+
+label {
+    color: #079ad9;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+}
+
+.fas {
+    align-self: center;
+    margin: auto;
+    margin-top: 0rem;
+}
+
+.labeltext {
+    font-family: 'Helvetica Neue', sans-serif;
+    align-self: center;
+    margin-bottom: 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 180px;
+}
+
+input[type="radio"].radio-button {
+    display: none;
+}
+
+input[type="radio"].radio-button+label {
+    border: 2px solid #079ad9;
+    border-radius: 5px;
+    background-color: white;
+    width: 80px;
+    height: 30px;
+    transition: transform 300ms ease;
+}
+
+input[type="radio"].radio-button:checked+label {
+    background-color: #079ad9;
+    color: white;
+    transform: scale(1.1, 1.1);
+}
